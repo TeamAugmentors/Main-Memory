@@ -330,6 +330,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281854287}
   m_CullTransparentMesh: 1
+--- !u!1 &282561767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2925693222337746426, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
+  m_PrefabInstance: {fileID: 3736818151484856990}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &282561768 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6020778176654410047, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
+  m_PrefabInstance: {fileID: 3736818151484856990}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &282561769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282561767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff4e8fcc04f7754aaccf246b31b2623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonRect: {fileID: 282561768}
+  safeDistance: 100
+  moveSpeed: 500
+  uiCamera: {fileID: 519420031}
 --- !u!1 &406729890
 GameObject:
   m_ObjectHideFlags: 0
@@ -2307,6 +2333,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -210
       objectReference: {fileID: 0}
+    - target: {fileID: 4937431910271253144, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5389453796525858953, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -2463,14 +2493,34 @@ PrefabInstance:
       propertyPath: m_text
       value: NO
       objectReference: {fileID: 0}
+    - target: {fileID: 7033099669802055040, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033099669802055040, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033099669802055040, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1128.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033099669802055040, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -210
+      objectReference: {fileID: 0}
     - target: {fileID: 7393422377018612244, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
       propertyPath: m_Name
       value: No Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4937431910271253144, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2925693222337746426, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 282561769}
   m_SourcePrefab: {fileID: 100100000, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
 --- !u!224 &3736818151484856991 stripped
 RectTransform:
