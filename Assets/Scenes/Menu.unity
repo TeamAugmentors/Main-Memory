@@ -340,7 +340,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6020778176654410047, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
   m_PrefabInstance: {fileID: 3736818151484856990}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &282561769
+--- !u!114 &282561772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -352,10 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff4e8fcc04f7754aaccf246b31b2623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonRect: {fileID: 282561768}
-  safeDistance: 100
-  moveSpeed: 500
-  uiCamera: {fileID: 519420031}
+  btnRectTransform: {fileID: 282561768}
 --- !u!1 &406729890
 GameObject:
   m_ObjectHideFlags: 0
@@ -2520,7 +2517,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2925693222337746426, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 282561769}
+      addedObject: {fileID: 282561772}
   m_SourcePrefab: {fileID: 100100000, guid: b976f94e9d7a6f841938ad2fbb285be1, type: 3}
 --- !u!224 &3736818151484856991 stripped
 RectTransform:
