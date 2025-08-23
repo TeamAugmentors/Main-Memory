@@ -2,15 +2,26 @@ using UnityEngine;
 
 public class OptionsScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject optionMenu;
 
-    // Update is called once per frame
-    void Update()
+    private UIManager uiManager;
+    
+    private void Awake()
     {
-        
+        uiManager = FindFirstObjectByType<UIManager>();
+    }
+    
+    public void ToggleOptionMenu(bool shouldEnable)
+    {
+        optionMenu.SetActive(shouldEnable);
+    }
+    
+    public void OnCrossButtonClicked()
+    {
+        if (uiManager != null)
+        {
+            ToggleOptionMenu(false);
+            uiManager.ToggleAllButtons(true);
+        }
     }
 }

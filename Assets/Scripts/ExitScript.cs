@@ -26,7 +26,8 @@ public class ExitScript : MonoBehaviour
     {
         if (uiManager != null)
         {
-            uiManager.OnExitButtonClicked(false);
+            ToggleExitPopup(false);
+            uiManager.ToggleAllButtons(true);
         }
     }
 }

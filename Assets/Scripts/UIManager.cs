@@ -7,20 +7,21 @@ public class UIManager : MonoBehaviour
     [SerializeField] CreditsScript creditsScript;
     [SerializeField] ExitScript exitScript;
     
-    public void OnOptionsButtonClicked()
+    public void OnOptionsButtonClicked(bool shouldEnablePopup)
     {
-        //TODO
+        optionsScript.ToggleOptionMenu(true);
+        ToggleAllButtons(!shouldEnablePopup);
     }
 
-    public void OnCreditsButtonClicked()
+    public void OnCreditsButtonClicked(bool shouldEnablePopup)
     {
-        //TODO
+        ToggleAllButtons(!shouldEnablePopup);
     }
     
     public void OnExitButtonClicked(bool shouldEnablePopup)
     {
+        exitScript.ToggleExitPopup(true);
         ToggleAllButtons(!shouldEnablePopup);
-        exitScript.ToggleExitPopup(shouldEnablePopup);
     }
 
     public void ToggleAllButtons(bool shouldEnable)
