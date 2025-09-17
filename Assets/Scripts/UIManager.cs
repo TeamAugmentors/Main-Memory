@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +24,7 @@ public class UIManager : MonoBehaviour
         exitScript.ToggleExitPopup(true);
         ToggleAllButtons(!shouldEnablePopup);
     }
-
+    
     public void ToggleAllButtons(bool shouldEnable)
     {
         optionsScript.transform.GetComponent<Button>().interactable = shouldEnable;
