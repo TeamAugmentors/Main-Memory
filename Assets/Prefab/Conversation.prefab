@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 6461132491495916080}
   - component: {fileID: 5309550350826568109}
   m_Layer: 5
-  m_Name: Text Display
+  m_Name: Conversation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
