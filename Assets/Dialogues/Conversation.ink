@@ -4,6 +4,7 @@ VAR player_name = "Player"
 VAR alias_Lily = false
 VAR saved_settings = false
 VAR premature_exit = false
+VAR waiting_for_name = false
 
 -> main_menu
 
@@ -27,9 +28,11 @@ Are you reallllyyyyyyyyyyyyy really sure?
 ->exit_game
 
 === options_name_prompt ===
+~ waiting_for_name = true // Detect in Unity
+
 Hmmm... you are quite persistent... what's your name?
 
-+ [Enter a name] -> enter_name_choices
+->after_name
 
 === enter_name_choices ===
 /* (For now, choose a sample typed name. In Unity you can replace this by taking real input into $player_name.) */

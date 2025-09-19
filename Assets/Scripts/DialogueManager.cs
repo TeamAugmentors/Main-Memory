@@ -93,6 +93,20 @@ public class DialogueManager : MonoBehaviour
         {
             conversation.gameObject.SetActive(false);
             optionsScript.ToggleOptionMenu(true);
+            return;
         }
+        
+        if ((bool)currentStory.variablesState[InkVariables.WAITING_FOR_NAME])
+        {
+            conversation.ShowNameInputField();
+        }
+    }
+    
+    public void OnAnswerSubmit(string name)
+    {
+        currentStory.variablesState[InkVariables.PLAYER_NAME] = name;
+        currentStory.variablesState[InkVariables.WAITING_FOR_NAME] = false;
+        
+        ContinueStory();
     }
 }
