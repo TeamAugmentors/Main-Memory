@@ -3,14 +3,14 @@ using UnityEngine;
 public class OptionsScript : MonoBehaviour
 {
     [SerializeField] private GameObject optionMenu;
-
+    [Header("Ink JSON")]
+    [SerializeField] private TextAsset inkJSON;
+    
     private UIManager uiManager;
-    private GameManager gameManager;
     
     private void Awake()
     {
         uiManager = FindFirstObjectByType<UIManager>();
-        gameManager = FindFirstObjectByType<GameManager>();
     }
     
     public void ToggleOptionMenu(bool shouldEnable)
@@ -20,15 +20,15 @@ public class OptionsScript : MonoBehaviour
     
     public void OnCrossButtonClicked()
     {
-        if (uiManager == null || gameManager == null)
+        if (uiManager == null || DialogueManager.GetInstance() == null)
         {
             return;
         }
 
-        if (gameManager.IsStartButtonEnabled)
+        if (DialogueManager.GetInstance().IsStartButtonEnabled)
         {
             ToggleOptionMenu(false);
-            gameManager.StartGameConversation();
+            DialogueManager.GetInstance().StartGameConversation(inkJSON);
         }
         else
         {

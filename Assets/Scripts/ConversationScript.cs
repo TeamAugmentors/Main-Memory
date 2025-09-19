@@ -31,13 +31,10 @@ public class ConversationScript : MonoBehaviour
         }
     }
     
-    public void Populate()
+    public void Populate(string currentText, string[] optionText)
     {
-        conversationText.text = "are you really sure you want to do this?";
         ToggleAnswerText(false);
-        
-        string[] optionText = { "Yes", "No" };
-        
+        conversationText.text = currentText;
         PopulateOptionButtons(optionText);
     }
 }
