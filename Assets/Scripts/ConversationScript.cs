@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Ink.Runtime;
 using TMPro;
 using UnityEngine;

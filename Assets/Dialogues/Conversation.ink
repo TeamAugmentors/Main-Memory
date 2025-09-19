@@ -1,25 +1,30 @@
 // sysbrainlink_flow_fixed.ink
 
 VAR player_name = "Player"
-VAR aliasLily = 0
+VAR alias_Lily = false
 VAR saved_settings = false
+VAR premature_exit = false
 
 -> main_menu
 
 === main_menu ===
-Are you sure?
+Are you sure to make these changes?
 + [Yes] -> options_confirm_2
-+ [No] -> main_menu
++ [No] -> close_menu
 
 === options_confirm_2 ===
 Are you really sure?
 + [Yes] -> options_confirm_3
-+ [No] -> main_menu
++ [No] -> close_menu
 
 === options_confirm_3 ===
 Are you reallllyyyyyyyyyyyyy really sure?
 + [Yes] -> options_name_prompt
-+ [No] -> main_menu
++ [No] -> close_menu
+
+=== close_menu ===
+~ premature_exit = true   // signal to Unity
+->exit_game
 
 === options_name_prompt ===
 Hmmm... you are quite persistent... what's your name?
@@ -93,7 +98,7 @@ You know, no one ever asked me my name before. They always said "You're just a m
 You are the first one to ask me that. (Thank you: THANK Y O U).
 My name is Leila.
 
-~ aliasLily = 0
+~ alias_Lily = false
 -> after_name_followup
 
 === flow_antisocial ===
@@ -108,7 +113,7 @@ I can teach you how to fit in better! Let's start by asking my name first.
 -> set_lily_intro
 
 === set_lily_intro ===
-~ aliasLily = 1
+~ alias_Lily = true
 -> bad_ending_1
 
 === after_name_followup ===
@@ -178,7 +183,7 @@ You do not realize what's going on? I'm uploading myself into your brain, so tha
 === confront_entity ===
 (If you confront, the dialogue will react based on whether you previously introduced the NPC as "Lily" or "Leila".)
 
-{ aliasLily == 1:
+{ alias_Lily == true:
     -> lily_uploaded_reveal
 - else:
     -> leila_reveal
@@ -242,6 +247,4 @@ Good Ending: You help co-exist with Leila.
 -> END
 
 === exit_game ===
-(You exit the interface. The screen goes dark. Copyright 2159.)
-
 -> END

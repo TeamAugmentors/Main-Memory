@@ -274,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   conversation: {fileID: 1448951442}
   gameTriggerMark: {fileID: 2000446836}
+  optionsScript: {fileID: 1025585294}
 --- !u!4 &195657234
 Transform:
   m_ObjectHideFlags: 0
@@ -2091,7 +2092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 644387380031873740, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 644387380031873740, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2111,11 +2112,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 644387380031873740, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnOption2Pressed
+      value: MakeChoice
       objectReference: {fileID: 0}
     - target: {fileID: 644387380031873740, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: GameManager, Assembly-CSharp
+      value: DialogueManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 644387380031873740, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 644387380031873740, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2171,7 +2176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4506331182048725066, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4506331182048725066, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2191,11 +2196,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4506331182048725066, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnOption1Pressed
+      value: MakeChoice
       objectReference: {fileID: 0}
     - target: {fileID: 4506331182048725066, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: GameManager, Assembly-CSharp
+      value: DialogueManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4506331182048725066, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2235,7 +2240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6382819720913788526, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6382819720913788526, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2255,11 +2260,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6382819720913788526, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnOption3Pressed
+      value: MakeChoice
       objectReference: {fileID: 0}
     - target: {fileID: 6382819720913788526, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: GameManager, Assembly-CSharp
+      value: DialogueManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382819720913788526, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6382819720913788526, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName

@@ -1,15 +1,13 @@
-using System;
 using System.Collections.Generic;
 using Ink.Runtime;
-using UnityEditor.Hardware;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 using UnityEngine.Serialization;
 
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] private ConversationScript conversation;
     [SerializeField] private GameObject gameTriggerMark;
+    [SerializeField] private OptionsScript optionsScript;
     
     private static DialogueManager instance;
     public bool IsStartButtonEnabled { get; set; }
@@ -88,6 +86,13 @@ public class DialogueManager : MonoBehaviour
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
+
         ContinueStory();
+        
+        if ((bool)currentStory.variablesState[InkVariables.PREMATURE_EXIT])
+        {
+            conversation.gameObject.SetActive(false);
+            optionsScript.ToggleOptionMenu(true);
+        }
     }
 }
