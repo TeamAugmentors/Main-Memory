@@ -34,52 +34,34 @@ Hmmm... you are quite persistent... what's your name?
 
 ->after_name
 
-=== enter_name_choices ===
-/* (For now, choose a sample typed name. In Unity you can replace this by taking real input into $player_name.) */
-
-+ [Leone] -> set_name("Leone")
-+ [Simon] -> set_name("Simon")
-+ [Other (Player)] -> set_name_custom
-
-=== set_name(name) ===
-~ player_name = name
--> after_name
-
-=== set_name_custom ===
-~ player_name = "Player"
--> after_name
-
 === after_name ===
 Thats a cute name :3, Howeverrrrrrrrrrrrrr… I do not think you are actually very serious about saving these settings.
+    +[Next] -> after_name_text2
 
+=== after_name_text2 ===
 Tell you what {player_name}, if you can answer this riddle, I will know that you are serious.
-
-A 1 story yellow house has everything painted yellow. Yellow furniture, yellow walls, yellow windows. Everything yellow. What colour are the stairs?
+    +[Next] -> after_name_text3
+    
+=== after_name_text3 === 
+A one story yellow house has everything painted yellow. Yellow furniture, yellow walls, yellow windows. Everything yellow. What colour are the stairs?
 
 + [Yellow] -> riddle_yellow
 + [It's a 1 story house, no stairs] -> riddle_smart
 + [Orange] -> riddle_orange
 
 === riddle_yellow ===
-Haha that was an easy trap 😛.
+Haha that was an easy trap 😛.A one story house has no stairs. So the answer would be no stairs!#GLITCH: I wouldn't know : I WAS TRAPPED
 
-(But a 1 story house has no stairs. So the answer would be no stairs!)
-(GLITCH: I wouldn't know : I WAS TRAPPED)
-
--> after_riddle
++[Next] -> after_riddle
 
 === riddle_smart ===
-A smart one... This will be fun.
-
-I wonder what it's like to live in a one story house.
-(GLITCH: I wouldn't know : I WAS TRAPPED)
-
--> after_riddle
+A smart one... This will be fun.I wonder what it's like to live in a one story house.#GLITCH: I wouldn't know : I WAS TRAPPED
++[Next] -> after_riddle
 
 === riddle_orange ===
 Eh? Orange!? Where did you get Orange from? Not that bright huh...
 
--> after_riddle
++[Next] -> after_riddle
 
 === after_riddle ===
 Say, I have been asking so much about you, but you didn't even ask me my name. Where are your mannerisms!?
@@ -89,24 +71,19 @@ Say, I have been asking so much about you, but you didn't even ask me my name. W
 + [Sorry I'm antisocial] -> flow_antisocial
 
 === flow_mainmenu_dialog ===
-Oh yeah, why would a main menu dialog have a name, (that's crazy!: THEY CALLED ME CRAZY). But still... you could be a bit nicer.
+Oh yeah, why would a main menu dialog have a name[]. But still... you could be a bit nicer.#GLITCH: that's crazy!: THEY CALLED ME CRAZY). 
 
 + [Okay I'll play along. What's your name?] -> name_choice_lily
 -> after_name_followup
 
 === flow_ask_name ===
-Eh? Didn't it cross your mind that (I'm just a main menu dialog?: I AM HUMAN, I AM PRETTY)?
-
-You know, no one ever asked me my name before. They always said "You're just a main menu dialog".
-You are the first one to ask me that. (Thank you: THANK Y O U).
-My name is Leila.
+Eh? Didn't it cross your mind that (I'm just a main menu dialog?: I AM HUMAN, I AM PRETTY)?You know, no one ever asked me my name before. They always said "You're just a main menu dialog".You are the first one to ask me that. (Thank you: THANK Y O U).My name is Leila.
 
 ~ alias_Lily = false
--> after_name_followup
++[Next] -> after_name_followup
 
 === flow_antisocial ===
-(I see, social interactions are a bit tough on you: A FINE PREY NO ONE WOULD CARE ABOUT).
-I can teach you how to fit in better! Let's start by asking my name first.
+(I see, social interactions are a bit tough on you: A FINE PREY NO ONE WOULD CARE ABOUT).I can teach you how to fit in better! Let's start by asking my name first.
 
 + [...Fine, what's your name?] -> name_choice_lily
 

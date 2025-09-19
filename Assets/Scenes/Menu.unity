@@ -2472,6 +2472,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1707001228802761571, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707001228802761571, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707001228802761571, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707001228802761571, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707001228802761571, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707001228802761571, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2035054245913375387, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_Name
       value: Conversation
