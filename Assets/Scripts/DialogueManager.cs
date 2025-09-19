@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Ink.Runtime;
 using UnityEditor.Hardware;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     public bool IsStartButtonEnabled { get; set; }
     
     private Story currentStory;
+    private List<Choice> options;
 
     public static DialogueManager GetInstance()
     {
@@ -48,37 +50,44 @@ public class DialogueManager : MonoBehaviour
         conversation.transform.gameObject.SetActive(true);
         ContinueStory();
     }
-
-    public void OnOption1Pressed()
-    {
-        ContinueStory();
-        Debug.Log("Option 1");
-    }
-
-    public void OnOption2Pressed()
-    {
-        ContinueStory();
-        Debug.Log("Option 2");
-    }
-
-    public void OnOption3Pressed()
-    {
-        ContinueStory();
-        Debug.Log("Option 3");
-    }
-
+    
     private void ContinueStory()
     {
         if (currentStory.canContinue)
         {
-            string[] options = { "yes", "no" };
+            var currentText = currentStory.Continue();
+            options = GetCurrentChoices();
             
-            conversation.Populate(currentStory.Continue(), options);
+            if (options == null || options.Count == 0)
+            {
+                Debug.Log("No options found!");
+            }
+            
+            conversation.Populate(currentText, options);
         }
         else
         {
             //TODO write what to do after dialogue ends
             Debug.Log("End of conversation");
         }
+    }
+
+    private List<Choice> GetCurrentChoices()
+    {
+        List<Choice> currentChoices = currentStory.currentChoices;
+
+        if (currentChoices.Count > conversation.getMaxChoiceCount)
+        {
+            Debug.LogError("Max choice count is " + conversation.getMaxChoiceCount + " but given " + currentChoices.Count + " choices");
+            return null;
+        }
+
+        return currentChoices;
+    }
+
+    public void MakeChoice(int choiceIndex)
+    {
+        currentStory.ChooseChoiceIndex(choiceIndex);
+        ContinueStory();
     }
 }

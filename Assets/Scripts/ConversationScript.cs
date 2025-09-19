@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using Ink.Runtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,33 +11,35 @@ public class ConversationScript : MonoBehaviour
     [SerializeField] TextMeshProUGUI Answer;
     [SerializeField] private Button[] optionButtons;
 
+    public int getMaxChoiceCount => optionButtons.Length;
+    
     private void ToggleAnswerText(bool enable)
     {
         Answer.transform.gameObject.SetActive(enable);
     }
 
-    private void PopulateOptionButtons(string[] optionText)
+    private void PopulateOptionButtons(List<Choice> options)
     {
         int currentIndex = 0;
         
         foreach (var currentOption in optionButtons)
         {
-            bool currentOptionEnabled = !(currentIndex >= optionText.Length);
+            bool currentOptionEnabled = !(currentIndex >= options.Count);
             currentOption.gameObject.SetActive(currentOptionEnabled);
 
             if (currentOptionEnabled)
             {
-                currentOption.GetComponentInChildren<TextMeshProUGUI>().text = optionText[currentIndex];
+                currentOption.GetComponentInChildren<TextMeshProUGUI>().text = options[currentIndex].text;
             }
             
             currentIndex++;
         }
     }
     
-    public void Populate(string currentText, string[] optionText)
+    public void Populate(string currentText, List<Choice> options)
     {
         ToggleAnswerText(false);
         conversationText.text = currentText;
-        PopulateOptionButtons(optionText);
+        PopulateOptionButtons(options);
     }
 }
