@@ -99,7 +99,7 @@ I see, social interactions are a bit tough on you. I can teach you how to fit in
 === name_choice_lily ===
 ~ alias_Lily = true
 My name's Lily, like the flower!#GLITCH: I HATED MY NAME
--> bad_ending_1
++[Next]-> bad_ending_1
 
 === after_name_followup ===
 Anyways nice to meet you {player_name}, I think you are serious enough to save your settings. Shall we?
