@@ -7,4 +7,5 @@ public class InkVariables : MonoBehaviour
     public static string SAVED_SETTINGS = "saved_settings";
     public static string PREMATURE_EXIT = "premature_exit";
     public static string WAITING_FOR_NAME = "waiting_for_name";
+    public static string HAS_GAME_COMPLETED = "has_game_completed";
 }

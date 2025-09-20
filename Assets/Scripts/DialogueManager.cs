@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private ConversationScript conversation;
     [SerializeField] private GameObject gameTriggerMark;
     [SerializeField] private OptionsScript optionsScript;
+    [SerializeField] private GameObject GameVisualChanges;
     
     private static DialogueManager instance;
     public bool IsStartButtonEnabled { get; set; }
@@ -34,6 +35,7 @@ public class DialogueManager : MonoBehaviour
     {
         IsStartButtonEnabled = false;
         conversation.gameObject.SetActive(false);
+        GameVisualChanges.SetActive(false);
     }
     
     public void OnGameTriggerPressed()
@@ -99,6 +101,17 @@ public class DialogueManager : MonoBehaviour
         if ((bool)currentStory.variablesState[InkVariables.WAITING_FOR_NAME])
         {
             conversation.ShowNameInputField();
+        }
+        
+        if ((bool)currentStory.variablesState[InkVariables.SAVED_SETTINGS])
+        {
+            GameVisualChanges.SetActive(true);
+        }
+        
+        if ((bool)currentStory.variablesState[InkVariables.HAS_GAME_COMPLETED])
+        {
+            //Reached game end. roll game credits
+            Debug.Log("Game completed");
         }
     }
     
