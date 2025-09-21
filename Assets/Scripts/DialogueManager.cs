@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Ink.Runtime;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -15,7 +14,7 @@ public class DialogueManager : MonoBehaviour
     
     private Story currentStory;
     private List<Choice> options;
-
+    
     public static DialogueManager GetInstance()
     {
         return instance;

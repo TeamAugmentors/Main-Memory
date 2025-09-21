@@ -2196,7 +2196,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2740757625221113232, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
   m_PrefabInstance: {fileID: 1672595293}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1994629691}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -2489,6 +2489,11 @@ MonoBehaviour:
   - {fileID: 173672422}
   - {fileID: 1269246673}
   - {fileID: 1949037639}
+  shouldEnableTypeWriterEffect: 1
+  typewriterScript: {fileID: 1994629695}
+  flickerMin: 0.05
+  flickerMax: 0.15
+  flickerCount: 6
 --- !u!114 &1553954470 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8662200876401332983, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
@@ -3075,6 +3080,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2035054245913375387, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1448951442}
+    - targetCorrespondingSourceObject: {fileID: 848731928446917935, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1994629695}
   m_SourcePrefab: {fileID: 100100000, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
 --- !u!1 &1769697995
 GameObject:
@@ -3850,6 +3858,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970392964}
   m_CullTransparentMesh: 1
+--- !u!1 &1994629691 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 848731928446917935, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
+  m_PrefabInstance: {fileID: 1672595293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1994629695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994629691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a08135b7ee13904d849b76b7369b919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TypewriterScript
+  textUI: {fileID: 1068921253}
+  typeSpeed: 0.05
 --- !u!1 &2000446836
 GameObject:
   m_ObjectHideFlags: 0
