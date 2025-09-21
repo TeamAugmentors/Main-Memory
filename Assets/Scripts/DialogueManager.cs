@@ -50,6 +50,8 @@ public class DialogueManager : MonoBehaviour
         ContinueStory();
     }
     
+    #region Story
+    
     private void ContinueStory()
     {
         if (currentStory.canContinue)
@@ -62,7 +64,9 @@ public class DialogueManager : MonoBehaviour
                 Debug.Log("No options found!");
             }
             
-            conversation.Populate(currentText, options);
+            var glitchText = HandleTags(currentStory.currentTags);
+            
+            conversation.Populate(currentText, options, glitchText);
         }
         else
         {
@@ -113,6 +117,39 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("Game completed");
         }
     }
+
+    private string HandleTags(List<string> currentTags)
+    {
+        string glitchText = string.Empty;
+        
+        foreach (string tag in currentTags)
+        {
+            string[] tags = tag.Split(':');
+
+            if (tags.Length != 2)
+            {
+                Debug.LogError("Tags could not be properly parsed: " + tags);
+                continue;
+            }
+            
+            string tagKey = tags[0];
+            string tagValue = tags[1];
+
+            switch (tagKey)
+            {
+                case InkVariables.GLITCH_TAG:
+                    glitchText = tagValue;
+                    break;
+                default:
+                    Debug.LogError(tagKey + " is not a valid tag: " + tagValue);
+                    break;
+            }
+        }
+        
+        return glitchText;
+    }
+    
+    #endregion
     
     public void OnAnswerSubmit(string name)
     {

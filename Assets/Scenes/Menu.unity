@@ -2489,11 +2489,10 @@ MonoBehaviour:
   - {fileID: 173672422}
   - {fileID: 1269246673}
   - {fileID: 1949037639}
-  shouldEnableTypeWriterEffect: 1
+  shouldEnableTypeWriterEffect: 0
   typewriterScript: {fileID: 1994629695}
-  flickerMin: 0.05
-  flickerMax: 0.15
-  flickerCount: 6
+  flickerMin: 1
+  flickerMax: 1
 --- !u!114 &1553954470 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8662200876401332983, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
@@ -2611,7 +2610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2740757625221113232, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2798572379954220500, guid: 02767ea54871e234fa25e7e5bb568f53, type: 3}
       propertyPath: m_SizeDelta.x

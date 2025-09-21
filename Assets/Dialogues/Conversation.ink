@@ -11,6 +11,7 @@ VAR has_game_completed = false
 
 === main_menu ===
 Are you sure to make these changes?
+
 + [Yes] -> options_confirm_2
 + [No] -> close_menu
 
@@ -55,12 +56,12 @@ A one story yellow house has everything painted yellow. Yellow furniture, yellow
 + [Orange] -> riddle_orange
 
 === riddle_yellow ===
-Haha that was an easy trap 😛.A one story house has no stairs. So the answer would be no stairs! I wonder what its like to live in a one story house, @I wouldn't know@. #GLITCH: I WAS TRAPPED
+Haha that was an easy trap. A one story house has no stairs. So the answer would be no stairs! I wonder what its like to live in a one story house, @I wouldn't know@. #GLITCH:I WAS TRAPPED
 
 +[Next] -> after_riddle
 
 === riddle_smart ===
-A smart one... This will be fun. I wonder what it's like to live in a one story house, @I wouldn't know@. #GLITCH: I WAS TRAPPED
+A smart one... This will be fun. I wonder what it's like to live in a one story house, @I wouldn't know@. #GLITCH:I WAS TRAPPED
 +[Next] -> after_riddle
 
 === riddle_orange ===
@@ -76,29 +77,29 @@ Say, I have been asking so much about you, but you didn't even ask me my name. W
 + [Sorry I'm antisocial] -> flow_antisocial
 
 === flow_mainmenu_dialog ===
-Oh yeah, why would a main menu dialog have a name, @that's crazy@! But still... you could be a bit nicer.#GLITCH: THEY CALLED ME CRAZY). 
+Oh yeah, why would a main menu dialog have a name, @that's crazy@! But still... you could be a bit nicer.#GLITCH:THEY CALLED ME CRAZY). 
 
 + [Okay I'll play along. What's your name?] -> name_choice_lily
 -> after_name_followup
 
 === flow_ask_name ===
-Eh? Didn't it cross your mind that @I'm just a main menu dialog?@ #GLITCH: I AM HUMAN, I AM PRETTY 
+Eh? Didn't it cross your mind that @I'm just a main menu dialog?@ #GLITCH:I AM HUMAN, I AM PRETTY 
 +[Next] -> flow_ask_name_2
 
 === flow_ask_name_2 ===
-You know, no one ever asked me my name before. They always said "You're just a main menu dialog". You are the first one to ask me that. @Thank you@. My name is Leila.#GLITCH: THANK Y O U
+You know, no one ever asked me my name before. They always said "You're just a main menu dialog". You are the first one to ask me that. @Thank you@. My name is Leila.#GLITCH:THANK Y O U
 
 ~ alias_Lily = false
 +[Next] -> after_name_followup
 
 === flow_antisocial ===
-I see, social interactions are a bit tough on you. I can teach you how to fit in better! Let's start by asking my name first.#GLITCH: A FINE PREY NO ONE WOULD CARE ABOUT
+I see, social interactions are a bit tough on you. I can teach you how to fit in better! Let's start by asking my name first.#GLITCH:A FINE PREY NO ONE WOULD CARE ABOUT
 
 + [...Fine, what's your name?] -> name_choice_lily
 
 === name_choice_lily ===
 ~ alias_Lily = true
-My name's Lily, like the flower!#GLITCH: I HATED MY NAME
+My name's Lily, like the flower!#GLITCH:I HATED MY NAME
 +[Next]-> bad_ending_1
 
 === after_name_followup ===
@@ -189,7 +190,7 @@ You try to reason.
 +[Next]-> leila_reveal
 
 === lily_uploaded_reveal ===
-She smiled with your face — "Finally," she said. "I can move." You feel a presence taking root. The neural interface opens like a door. #GLITCH: You hear a softer voice then a sharper overwriting echo.
+She smiled with your face — "Finally," she said. "I can move." You feel a presence taking root. The neural interface opens like a door. #GLITCH:You hear a softer voice then a sharper overwriting echo.
 
 +[Next]-> bad_ending_1
 

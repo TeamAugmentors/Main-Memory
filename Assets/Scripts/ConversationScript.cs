@@ -18,9 +18,15 @@ public class ConversationScript : MonoBehaviour
     [SerializeField] TypewriterScript typewriterScript;
     
     [Header("TextGlitch")]
-    public float flickerMin = 0.05f;
-    public float flickerMax = 0.15f;
-    public int flickerCount = 6;
+    [SerializeField] float flickerMin = 1f;
+    [SerializeField] float flickerMax = 1f;
+    
+    private int glitchStartIndex;
+    private string originalSegment;
+    private string glitchSegment;
+    private string displayText;
+    private bool HasGlitchText => glitchSegment is { Length: > 0 };
+    private bool hasNextBtnPressed { get; set; }
     
     public int getMaxChoiceCount => optionButtons.Length;
     
@@ -36,25 +42,41 @@ public class ConversationScript : MonoBehaviour
         Answer.transform.gameObject.SetActive(enable);
     }
     
-    public void Populate(string currentText, List<Choice> options)
+    public void Populate(string currentText, List<Choice> options, string glitchText)
     {
+        hasNextBtnPressed = true;
         ToggleAnswerText(false);
 
+        if (glitchText.Length > 0)
+        {
+            //process text before showing
+            currentText = ProcessAndGlitch(currentText, glitchText);
+        }
+        
         if (shouldEnableTypeWriterEffect)
         {
             HideAllOptions();
             typewriterScript.StartEffect(currentText, GetTextSpeed(currentText), () =>
             {
-                PopulateOptionButtons(options);
+                PostDisplayText(options);
             });
         }
         else
         {
             conversationText.text = currentText;
-            PopulateOptionButtons(options);
+            PostDisplayText(options);
         }
     }
 
+    private void PostDisplayText(List<Choice> options)
+    {
+        PopulateOptionButtons(options);
+        if (HasGlitchText)
+        {
+            StartCoroutine(GlitchCoroutine(displayText, originalSegment, glitchSegment, glitchStartIndex));
+        }
+    }
+    
     private void PopulateOptionButtons(List<Choice> options)
     {
         int currentIndex = 0;
@@ -107,58 +129,56 @@ public class ConversationScript : MonoBehaviour
     
     #region Text Glitch
     
-    void ProcessAndGlitch(string input)
+    private string ProcessAndGlitch(string input, string glitchText)
     {
         int startIdx = input.IndexOf('@');
         int endIdx = input.LastIndexOf('@');
 
         if (startIdx == -1 || endIdx == -1 || endIdx <= startIdx)
         {
-            conversationText.text = input;
-            return;
+            return input;
         }
 
         string originalSegment = input.Substring(startIdx + 1, endIdx - startIdx - 1);
+        
+        // 3. Build the display string without the @ markers
+        string displayText = input.Substring(0, startIdx) + originalSegment + input.Substring(endIdx + 1, input.Length - endIdx - 1);
 
-        // Extract glitch replacement after #Glitch:
-        int glitchMarker = input.IndexOf("#Glitch: ");
-        string glitchSegment = (glitchMarker != -1) 
-            ? input.Substring(glitchMarker + 8).Trim() 
-            : originalSegment;
-
-        // 3. Build the display string without the @ markers and without #Glitch
-        string displayText = input.Substring(0, startIdx) + originalSegment + input.Substring(endIdx + 1, (glitchMarker != -1 ? glitchMarker - endIdx - 1 : input.Length - endIdx - 1));
-
+        //store glitch variables
+        this.displayText = displayText;
+        this.originalSegment = originalSegment;
+        glitchSegment = glitchText;
+        glitchStartIndex = startIdx;
+        hasNextBtnPressed = false;
+        
         // Set initial text
-        conversationText.text = displayText;
-
-        // Start glitch coroutine
-        StartCoroutine(GlitchCoroutine(displayText, originalSegment, glitchSegment, startIdx));
+        return displayText;
     }
 
     IEnumerator GlitchCoroutine(string baseText, string originalSegment, string glitchSegment, int segmentStartIndex)
     {
-        for (int i = 0; i < flickerCount; i++)
+        //wait before glitch
+        yield return new WaitForSeconds(flickerMin);
+        
+        if (!hasNextBtnPressed)
         {
-            string tempText;
-
-            if (i % 2 == 0)
-            {
-                // Replace the segment with glitch
-                tempText = baseText.Substring(0, segmentStartIndex) + glitchSegment + baseText.Substring(segmentStartIndex + originalSegment.Length);
-            }
-            else
-            {
-                // Original segment
-                tempText = baseText;
-            }
-
-            conversationText.text = tempText;
-            yield return new WaitForSeconds(Random.Range(flickerMin, flickerMax));
+            conversationText.text = baseText.Substring(0, segmentStartIndex) + glitchSegment + baseText.Substring(segmentStartIndex + originalSegment.Length);
         }
-
-        // Revert back to original
-        conversationText.text = baseText;
+        else
+        {
+            yield break;
+        }
+        
+        yield return new WaitForSeconds(flickerMax);
+        
+        if (!hasNextBtnPressed)
+        {
+            conversationText.text = baseText;
+        }
+        else
+        {
+            yield break;
+        }
     }
     
     #endregion
