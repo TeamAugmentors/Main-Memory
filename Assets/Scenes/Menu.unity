@@ -2489,7 +2489,7 @@ MonoBehaviour:
   - {fileID: 173672422}
   - {fileID: 1269246673}
   - {fileID: 1949037639}
-  shouldEnableTypeWriterEffect: 0
+  shouldEnableTypeWriterEffect: 1
   typewriterScript: {fileID: 1994629695}
   flickerMin: 1
   flickerMax: 1

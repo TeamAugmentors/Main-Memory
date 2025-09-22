@@ -9,4 +9,7 @@ public class InkVariables : MonoBehaviour
     public static string WAITING_FOR_NAME = "waiting_for_name";
     public static string HAS_GAME_COMPLETED = "has_game_completed";
     public const string GLITCH_TAG = "GLITCH";
+
+    public const float COMMA_DELAY = 0.5f;
+    public const float DOT_DELAY = 0.3f;
 }

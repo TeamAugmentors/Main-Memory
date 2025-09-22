@@ -22,13 +22,28 @@ public class TypewriterScript : MonoBehaviour
     IEnumerator RevealText(Action onComplete)
     {
         int total = textUI.text.Length;
-
-        for (int i = 0; i <= total; i++)
+        float prevCharDelay = 0f;
+        
+        for (int i = 0; i < total; i++)
         {
             textUI.maxVisibleCharacters = i;
-            yield return new WaitForSeconds(typeSpeed);
+
+            float tempDelay = textUI.text[i] == ',' ? InkVariables.COMMA_DELAY : 
+                IsPunctuation(textUI.text[i]) ? InkVariables.DOT_DELAY : 0f;
+            
+            yield return new WaitForSeconds(typeSpeed + prevCharDelay);
+            
+            prevCharDelay = tempDelay;
         }
         
         onComplete?.Invoke();
+    }
+
+    private bool IsPunctuation(char character)
+    {
+        if(character == '.' || character == '!' || character == '?')
+            return true;
+        
+        return false;
     }
 }
