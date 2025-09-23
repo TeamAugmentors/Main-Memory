@@ -34,6 +34,9 @@ public class ConversationScript : MonoBehaviour
     private DialogueManager dialogueManager;
     private GlitchDisplayController glitchController;
 
+    private string glitchMaterialTag = "<color=#FF0000>";
+    private string closingMaterialTag = "</color>";
+    
     private void Awake()
     {
         dialogueManager = FindFirstObjectByType<DialogueManager>();
@@ -167,7 +170,8 @@ public class ConversationScript : MonoBehaviour
         if (!hasNextBtnPressed)
         {
             glitchController.SetGlitch(true);
-            conversationText.text = baseText.Substring(0, segmentStartIndex) + glitchSegment + baseText.Substring(segmentStartIndex + originalSegment.Length);
+            conversationText.text = baseText.Replace(originalSegment, glitchMaterialTag + glitchSegment + closingMaterialTag);
+            //conversationText.text = baseText.Substring(0, segmentStartIndex) + glitchSegment + baseText.Substring(segmentStartIndex + originalSegment.Length);
         }
         else
         {
@@ -179,7 +183,8 @@ public class ConversationScript : MonoBehaviour
         if (!hasNextBtnPressed)
         {
             glitchController.SetGlitch(false);
-            conversationText.text = baseText;
+            conversationText.text = baseText.Replace(glitchSegment, glitchMaterialTag + originalSegment + closingMaterialTag);
+            //conversationText.text = baseText;
         }
         else
         {
