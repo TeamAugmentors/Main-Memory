@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GlitchTest 4
+  m_Shader: {fileID: 4800000, guid: 4a1eb11373d728d41a22f4746b0b6652, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Amount: 0.02
+    - _BlueBias: 1
+    - _CellRepeatX: 160
+    - _CenterWarp: 0.22
+    - _EnableExternalAlpha: 0
+    - _FlashProb: 0.7
+    - _GrainAmount: 0.05
+    - _GreenBurst: 0.9
+    - _Intensity: 0.786
+    - _Jitter: 0.035
+    - _MagentaBias: 1
+    - _NoiseStrength: 0.462
+    - _RGBShift: 0.02
+    - _RedBurst: 0.6
+    - _SpeckleProb: 0.05
+    - _Speed: 4
+    - _StreakWidth: 0.02
+    - _StripAlpha: 0.85
+    - _StripDensity: 60
+    - _StripStrength: 0.0739
+    - _Vignette: 1.2
+    - _ZWrite: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

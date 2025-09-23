@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Ink.Runtime;
@@ -31,12 +32,14 @@ public class ConversationScript : MonoBehaviour
     public int getMaxChoiceCount => optionButtons.Length;
     
     private DialogueManager dialogueManager;
+    private GlitchDisplayController glitchController;
 
     private void Awake()
     {
         dialogueManager = FindFirstObjectByType<DialogueManager>();
+        glitchController = GetComponent<GlitchDisplayController>();
     }
-
+    
     private void ToggleAnswerText(bool enable)
     {
         Answer.transform.gameObject.SetActive(enable);
@@ -46,6 +49,7 @@ public class ConversationScript : MonoBehaviour
     {
         hasNextBtnPressed = true;
         ToggleAnswerText(false);
+        glitchController.SetGlitch(false);
 
         if (glitchText.Length > 0)
         {
@@ -162,6 +166,7 @@ public class ConversationScript : MonoBehaviour
         
         if (!hasNextBtnPressed)
         {
+            glitchController.SetGlitch(true);
             conversationText.text = baseText.Substring(0, segmentStartIndex) + glitchSegment + baseText.Substring(segmentStartIndex + originalSegment.Length);
         }
         else
@@ -173,6 +178,7 @@ public class ConversationScript : MonoBehaviour
         
         if (!hasNextBtnPressed)
         {
+            glitchController.SetGlitch(false);
             conversationText.text = baseText;
         }
         else

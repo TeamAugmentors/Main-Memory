@@ -30,6 +30,8 @@ public class TypewriterScript : MonoBehaviour
 
             float tempDelay = textUI.text[i] == ',' ? InkVariables.COMMA_DELAY : 
                 IsPunctuation(textUI.text[i]) ? InkVariables.DOT_DELAY : 0f;
+
+            tempDelay *= i == total - 1 ? 0 : 1;
             
             yield return new WaitForSeconds(typeSpeed + prevCharDelay);
             
