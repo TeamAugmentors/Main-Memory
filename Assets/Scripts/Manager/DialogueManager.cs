@@ -2,18 +2,22 @@ using System.Collections.Generic;
 using Ink.Runtime;
 using UnityEngine;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private ConversationScript conversation;
     [SerializeField] private GameObject gameTriggerMark;
     [SerializeField] private OptionsScript optionsScript;
     [SerializeField] private GameObject GameVisualChanges;
     
+    [Header("Ink JSON")]
+    [SerializeField] private TextAsset inkJSON;
+    
     private static DialogueManager instance;
     public bool IsStartButtonEnabled { get; set; }
     
     private Story currentStory;
     private List<Choice> options;
+    private bool hasStoryStarted;
     
     public static DialogueManager GetInstance()
     {
@@ -28,13 +32,21 @@ public class DialogueManager : MonoBehaviour
         }
         
         instance = this;
+        DataPersistenceManager.Instance.NewGame();
     }
 
     private void Start()
     {
         IsStartButtonEnabled = false;
+        hasStoryStarted = false;
         conversation.gameObject.SetActive(false);
         GameVisualChanges.SetActive(false);
+        PopulateCurrentStory();
+    }
+
+    private void PopulateCurrentStory()
+    {
+        currentStory = new Story(inkJSON.text);
     }
     
     public void OnGameTriggerPressed()
@@ -42,21 +54,72 @@ public class DialogueManager : MonoBehaviour
         IsStartButtonEnabled = !IsStartButtonEnabled;
         gameTriggerMark.SetActive(IsStartButtonEnabled);
     }
-    
-    public void StartGameConversation(TextAsset inkJSON)
+
+    public void ResetTriggerPressed()
     {
-        currentStory = new Story(inkJSON.text);
+        IsStartButtonEnabled = false;
+        gameTriggerMark.SetActive(false);
+    }
+    
+    public void StartGameConversation()
+    {
+        PopulateCurrentStory();
         conversation.transform.gameObject.SetActive(true);
+        hasStoryStarted = true;
         ContinueStory();
+    }
+
+    private void ResetToMainMenu()
+    {
+        ResetTriggerPressed();
+        GameVisualChanges.SetActive(false);
+        conversation.gameObject.SetActive(false);
+        optionsScript.RegularCloseOptionMenu();
+    }
+    
+    public void LoadGameConversation(GameData data)
+    {
+        if (!data.hasStoryStarted)
+        {
+            ResetToMainMenu();
+            return;
+        }
+        
+        optionsScript.ToggleOptionMenu(false);
+        conversation.transform.gameObject.SetActive(true);
+        currentText = data.last_line;
+
+        if (currentStory.currentChoices.Count > 0)
+        {
+            options = GetCurrentChoices();
+            
+            if (options == null || options.Count == 0)
+            {
+                Debug.Log("No options found!");
+            }
+            
+            var glitchText = HandleTags(currentStory.currentTags);
+            
+            conversation.Populate(currentText, options, glitchText);
+        }
+        else if((bool)currentStory.variablesState[InkVariables.WAITING_FOR_NAME])
+        {
+            var glitchText = HandleTags(currentStory.currentTags);
+            options = new List<Choice>();
+            conversation.Populate(currentText, options, glitchText);
+            conversation.ShowNameInputField();
+        }
     }
     
     #region Story
+
+    private string currentText;
     
     private void ContinueStory()
     {
         if (currentStory.canContinue)
         {
-            var currentText = currentStory.Continue();
+            currentText = currentStory.Continue();
             options = GetCurrentChoices();
             
             if (options == null || options.Count == 0)
@@ -158,4 +221,34 @@ public class DialogueManager : MonoBehaviour
         
         ContinueStory();
     }
+
+    #region SaveSystem
+    
+    public void LoadData(GameData data)
+    {
+        currentStory.state.LoadJson(data.ink_file);
+        
+        if (currentStory != null)
+        {
+            OnGameTriggerPressed();
+            LoadGameConversation(data);
+        }
+    }
+    
+    public void SaveData(ref GameData data)
+    {
+        //save ink file progress
+        if (currentStory != null)
+        {
+            data.hasStoryStarted = hasStoryStarted;
+            data.ink_file = currentStory.state.ToJson();
+            data.last_line = currentText;
+        }
+        else
+        {
+            Debug.Log("Nothing to save");
+        }
+    }
+    
+    #endregion
 }

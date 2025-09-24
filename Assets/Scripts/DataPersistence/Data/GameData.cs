@@ -1,19 +1,20 @@
-using UnityEngine;
+using System.Collections.Generic;
+using Ink.Runtime;
 
 [System.Serializable]
 public class GameData
 {
-    public string player_name;
-    public bool has_alias;
-    public bool saved_settings;
-    public bool has_game_completed;
+    public bool hasStoryStarted;
+    public string dateTime;
+    public string ink_file;
+    public string last_line;
 
     //initial values
     public GameData()
     {
-        player_name = "";
-        has_alias = false;
-        saved_settings = false;
-        has_game_completed = false;
+        hasStoryStarted = false;
+        ink_file = "";
+        last_line = "";
+        dateTime = "00-00-00/00:00:00";
     }
 }
