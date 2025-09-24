@@ -762,7 +762,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -902,7 +902,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.23734128, g: 1, b: 0, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1100,9 +1100,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5891744791415297734}
-        m_TargetAssemblyTypeName: SlotsData, Assembly-CSharp
-        m_MethodName: OnSaveButtonClicked
+      - m_Target: {fileID: 8886671818336882440}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1112,9 +1112,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8886671818336882440}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 5891744791415297734}
+        m_TargetAssemblyTypeName: SlotsData, Assembly-CSharp
+        m_MethodName: OnSaveButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1245,9 +1245,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5891744791415297734}
-        m_TargetAssemblyTypeName: SlotsData, Assembly-CSharp
-        m_MethodName: OnLoadButtonClicked
+      - m_Target: {fileID: 8886671818336882440}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1257,9 +1257,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8886671818336882440}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 5891744791415297734}
+        m_TargetAssemblyTypeName: SlotsData, Assembly-CSharp
+        m_MethodName: OnSaveButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1352,6 +1352,9 @@ MonoBehaviour:
   serialText: {fileID: 488008441058653397}
   slotButton: {fileID: 2897802979266119051}
   timeText: {fileID: 4539865728200109897}
+  dataActionBtns:
+  - {fileID: 4932253651433799670}
+  - {fileID: 1288612107666007122}
 --- !u!82 &8886671818336882440
 AudioSource:
   m_ObjectHideFlags: 0

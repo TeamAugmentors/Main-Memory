@@ -32,11 +32,11 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
         }
         
         instance = this;
-        DataPersistenceManager.Instance.NewGame();
     }
 
     private void Start()
     {
+        DataPersistenceManager.Instance.NewGame();
         IsStartButtonEnabled = false;
         hasStoryStarted = false;
         conversation.gameObject.SetActive(false);

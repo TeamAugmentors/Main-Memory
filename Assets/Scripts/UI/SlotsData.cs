@@ -1,5 +1,7 @@
+using System.Net.Mime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SlotsData : MonoBehaviour
 {
@@ -7,10 +9,10 @@ public class SlotsData : MonoBehaviour
     [SerializeField] private TextMeshProUGUI serialText;
     [SerializeField] private TMP_InputField slotButton;
     [SerializeField] private TextMeshProUGUI timeText;
+    [SerializeField] private Button[] dataActionBtns;
     
     public string GetSlotId => slotId;
     private Files files;
-
     private void Start()
     {
         files = FindFirstObjectByType<Files>();
@@ -23,9 +25,11 @@ public class SlotsData : MonoBehaviour
         if (data == null)
         {
             timeText.text = "00/00/0000 : 00:00";
+            dataActionBtns[1].interactable = false;
         }
         else
         {
+            slotButton.GetComponent<Image>().color = Color.darkGreen;
             timeText.text = data.dateTime;
         }
     }
@@ -33,6 +37,7 @@ public class SlotsData : MonoBehaviour
     public void OnSaveButtonClicked(string id)
     {
         DataPersistenceManager.Instance.SaveGame(id);
+        files.OnCloseFile();
     }
 
     public void OnLoadButtonClicked(string id)
