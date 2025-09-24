@@ -5,27 +5,25 @@ using UnityEngine.UI;
 public class SlotsData : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI serialText;
-    [SerializeField] private Button slotButton;
+    [SerializeField] private TMP_InputField slotButton;
     [SerializeField] private TextMeshProUGUI timeText;
 
-    private bool hasSavedData = false;
+    private int slotIndex;
     
-    public void Populate(string serial, string buttomText, string time)
+    public void Populate(string serial, string time, int slotIndex)
     {
         serialText.text = serial;
-        slotButton.GetComponentInChildren<TextMeshProUGUI>().text = buttomText;
         timeText.text = time;
+        this.slotIndex = slotIndex;
     }
 
-    public void OnSlotClicked()
+    public void OnSavelicked()
     {
-        if (hasSavedData)
-        {
-            
-        }
-        else
-        {
-            
-        }
+        
+    }
+
+    public void OnLoadClicked()
+    {
+        
     }
 }
