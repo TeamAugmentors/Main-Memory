@@ -102,6 +102,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void StopSFX()
+    {
+        sfxSource.Stop();
+    }
+    
     // --- UI ---
     public void PlayUI(string name)
     {

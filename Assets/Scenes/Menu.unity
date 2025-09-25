@@ -4125,6 +4125,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 44766caa059435f4fb71af84b2bea7e4, type: 3}
   - name: UIClick
     clip: {fileID: 8300000, guid: 37fb2ade76250d64aaa7abebfded8b1e, type: 3}
+  - name: GlitchSFX
+    clip: {fileID: 8300000, guid: f4113c0e7b136d2439d5119446f438a5, type: 3}
   musicVolume: 1
   sfxVolume: 1
   uiVolume: 1

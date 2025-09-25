@@ -170,6 +170,7 @@ public class ConversationScript : MonoBehaviour
         if (!hasNextBtnPressed)
         {
             glitchController.SetGlitch(true);
+            AudioManager.Instance.PlaySFX("GlitchSFX");
             conversationText.text = baseText.Replace(originalSegment, glitchMaterialTag + glitchSegment + closingMaterialTag);
             //conversationText.text = baseText.Substring(0, segmentStartIndex) + glitchSegment + baseText.Substring(segmentStartIndex + originalSegment.Length);
         }
@@ -183,6 +184,7 @@ public class ConversationScript : MonoBehaviour
         if (!hasNextBtnPressed)
         {
             glitchController.SetGlitch(false);
+            AudioManager.Instance.StopSFX();
             conversationText.text = baseText.Replace(glitchSegment, glitchMaterialTag + originalSegment + closingMaterialTag);
             //conversationText.text = baseText;
         }
