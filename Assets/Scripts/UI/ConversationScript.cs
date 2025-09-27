@@ -48,7 +48,7 @@ public class ConversationScript : MonoBehaviour
         Answer.transform.gameObject.SetActive(enable);
     }
     
-    public void Populate(string currentText, List<Choice> options, string glitchText)
+    public void Populate(string currentText, List<Choice> options, string glitchText, bool IsGameLoading = false)
     {
         hasNextBtnPressed = true;
         ToggleAnswerText(false);
@@ -60,7 +60,7 @@ public class ConversationScript : MonoBehaviour
             currentText = ProcessAndGlitch(currentText, glitchText);
         }
         
-        if (shouldEnableTypeWriterEffect)
+        if (shouldEnableTypeWriterEffect && !IsGameLoading)
         {
             HideAllOptions();
             typewriterScript.StartEffect(currentText, GetTextSpeed(currentText), () =>
@@ -133,6 +133,12 @@ public class ConversationScript : MonoBehaviour
         HideNameInputField();
         dialogueManager.OnAnswerSubmit(answerInput.text);
     }
+
+    public void StopTypewriter()
+    {
+        typewriterScript.StopAllCoroutines();
+        typewriterScript.RevealInstantly();
+    }
     
     #region Text Glitch
     
@@ -165,6 +171,11 @@ public class ConversationScript : MonoBehaviour
     IEnumerator GlitchCoroutine(string baseText, string originalSegment, string glitchSegment, int segmentStartIndex)
     {
         //wait before glitch
+        if (hasNextBtnPressed)
+        {
+            yield return null;
+        }
+        
         yield return new WaitForSeconds(flickerMin);
         
         if (!hasNextBtnPressed)
@@ -172,7 +183,6 @@ public class ConversationScript : MonoBehaviour
             glitchController.SetGlitch(true);
             AudioManager.Instance.PlaySFX("GlitchSFX");
             conversationText.text = baseText.Replace(originalSegment, glitchMaterialTag + glitchSegment + closingMaterialTag);
-            //conversationText.text = baseText.Substring(0, segmentStartIndex) + glitchSegment + baseText.Substring(segmentStartIndex + originalSegment.Length);
         }
         else
         {
@@ -184,13 +194,8 @@ public class ConversationScript : MonoBehaviour
         if (!hasNextBtnPressed)
         {
             glitchController.SetGlitch(false);
-            AudioManager.Instance.StopSFX();
+            
             conversationText.text = baseText.Replace(glitchSegment, glitchMaterialTag + originalSegment + closingMaterialTag);
-            //conversationText.text = baseText;
-        }
-        else
-        {
-            yield break;
         }
     }
     

@@ -41,6 +41,11 @@ public class TypewriterScript : MonoBehaviour
         onComplete?.Invoke();
     }
 
+    public void RevealInstantly()
+    {
+        textUI.maxVisibleCharacters = Int32.MaxValue;
+    }
+    
     private bool IsPunctuation(char character)
     {
         if(character == '.' || character == '!' || character == '?')

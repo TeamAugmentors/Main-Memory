@@ -65,7 +65,6 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
     {
         PopulateCurrentStory();
         conversation.transform.gameObject.SetActive(true);
-        hasStoryStarted = true;
         ContinueStory();
     }
 
@@ -79,11 +78,15 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
     
     public void LoadGameConversation(GameData data)
     {
+        RefreshGameState();
+        
         if (!data.hasStoryStarted)
         {
             ResetToMainMenu();
             return;
         }
+        
+        GameVisualChanges.SetActive((bool)currentStory.variablesState[InkVariables.SAVED_SETTINGS]);
         
         optionsScript.ToggleOptionMenu(false);
         conversation.transform.gameObject.SetActive(true);
@@ -100,13 +103,13 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
             
             var glitchText = HandleTags(currentStory.currentTags);
             
-            conversation.Populate(currentText, options, glitchText);
+            conversation.Populate(currentText, options, glitchText, true);
         }
         else if((bool)currentStory.variablesState[InkVariables.WAITING_FOR_NAME])
         {
             var glitchText = HandleTags(currentStory.currentTags);
             options = new List<Choice>();
-            conversation.Populate(currentText, options, glitchText);
+            conversation.Populate(currentText, options, glitchText, true);
             conversation.ShowNameInputField();
         }
     }
@@ -114,11 +117,21 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
     #region Story
 
     private string currentText;
+
+    private void RefreshGameState()
+    {
+        AudioManager.Instance.StopSFX();
+        conversation.StopAllCoroutines();
+        conversation.StopTypewriter();
+    }
     
     private void ContinueStory()
     {
+        RefreshGameState();
+        
         if (currentStory.canContinue)
         {
+            hasStoryStarted = true;
             currentText = currentStory.Continue();
             options = GetCurrentChoices();
             
