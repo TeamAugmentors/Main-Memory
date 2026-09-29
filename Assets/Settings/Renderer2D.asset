@@ -26,8 +26,7 @@ MonoBehaviour:
     probeVolumeBlendStatesCS: {fileID: 0}
   m_RendererFeatures:
   - {fileID: 5048249101573042347}
-  m_RendererFeatureMap: ab30f2a4cffb0e46
-  m_UseNativeRenderPass: 0
+  m_RendererFeatureMap: ab30f2a4cffb0e46l
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -59,7 +58,7 @@ MonoBehaviour:
   m_DefaultCustomMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
 --- !u!114 &5048249101573042347
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -70,3 +69,7 @@ MonoBehaviour:
   m_Name: FullScreenRedFeature
   m_EditorClassIdentifier: Assembly-CSharp::FullScreenRedFeature
   m_Active: 1
+  settings:
+    glitchMaterial: {fileID: 0}
+    enabled: 0
+    when: 1000
