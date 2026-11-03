@@ -22,16 +22,14 @@ public class SlotsData : MonoBehaviour
     {
         serialText.text = serial;
         
-        if (data == null)
-        {
-            timeText.text = "00/00/0000 : 00:00";
-            dataActionBtns[1].interactable = false;
-        }
-        else
-        {
-            slotButton.GetComponent<Image>().color = Color.darkGreen;
-            timeText.text = data.dateTime;
-        }
+        bool hasSave = data != null;
+
+        dataActionBtns[1].interactable = hasSave;
+
+        slotButton.GetComponent<Image>().color =
+            hasSave ? Color.darkGreen : Color.white;
+
+        timeText.text = hasSave ? data.dateTime : "00/00/0000 : 00:00";
     }
 
     public void OnSaveButtonClicked(string id)
